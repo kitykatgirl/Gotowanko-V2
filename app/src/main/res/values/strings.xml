@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SKPrzepisy</string>
+    <string-array name="kategorie_string">
+        <item>ciastka</item>
+        <item>zupy</item>
+        <item>napoje</item>
+        <item>desery</item>
+    </string-array>
+</resources>
