@@ -8,6 +8,17 @@ public class Przepis {
     private int idObrazka;
     private ArrayList<String> skladniki = new ArrayList<>();
     private String opis;
+    private int idPrzepisu;
+    private static int licznikPrzepisow = 0;
+
+    public Przepis(String nazwaPrzepisu, String kategoria, int idObrazka, ArrayList<String> skladniki, String opis, int idPrzepisu) {
+        this.nazwaPrzepisu = nazwaPrzepisu;
+        this.kategoria = kategoria;
+        this.idObrazka = idObrazka;
+        this.skladniki = skladniki;
+        this.opis = opis;
+        this.idPrzepisu = idPrzepisu;
+    }
 
     public Przepis(String nazwaPrzepisu) {
         this.nazwaPrzepisu = nazwaPrzepisu;
@@ -15,6 +26,8 @@ public class Przepis {
         idObrazka = R.drawable.piernik;
         skladniki = new ArrayList<>();
         opis = "";
+        licznikPrzepisow++;
+        idPrzepisu = licznikPrzepisow;
     }
 
     public Przepis(String nazwaPrzepisu, String kategoria, int idObrazka) {
@@ -24,6 +37,8 @@ public class Przepis {
         skladniki.add("cokolwiek");
         this.opis = "Dasz radę :D";
         this.idObrazka = idObrazka;
+        licznikPrzepisow++;
+        idPrzepisu = licznikPrzepisow;
     }
 
     public Przepis(String nazwaPrzepisu, String kategoria, int idObrazka, ArrayList<String> skladniki, String opis) {
@@ -32,6 +47,8 @@ public class Przepis {
         this.idObrazka = idObrazka;
         this.skladniki = skladniki;
         this.opis = opis;
+        licznikPrzepisow++;
+        idPrzepisu = licznikPrzepisow;
     }
 
     @Override
@@ -39,6 +56,10 @@ public class Przepis {
         return "Przepisy{" +
                 "nazwaPrzepisu='" + nazwaPrzepisu + '\'' +
                 '}';
+    }
+
+    public int getIdPrzepisu() {
+        return idPrzepisu;
     }
 
     public String getNazwaPrzepisu() {

@@ -9,19 +9,19 @@ public class RepozytoriumPrzepisow {
     private static ArrayList<String> skladniki = new ArrayList<>();
     public static void generujPrzepisy(){
         skladniki.add("Rosół"); skladniki.add("Koncentrat Barszczu");
-        przepisy.add(new Przepis("Barszcz", "Zupy", R.drawable.barszcz, skladniki, "Wlej koncentrat barszczu do rosołu :D"));
+        przepisy.add(new Przepis("Barszcz", "Zupy", R.drawable.barszcz, skladniki, "Wlej koncentrat barszczu do rosołu :D",1));
         skladniki.clear();
 
         skladniki.add("Tłuste np. mięso, kość"); skladniki.add("Warzywa (opcjonalne)");
-        przepisy.add(new Przepis("Rosol", "Zupy", R.drawable.rosol, skladniki, "Wlej do garnka wodę, daj coś tłustego i odstaw aż się ugutoje"));
+        przepisy.add(new Przepis("Rosol", "Zupy", R.drawable.rosol, skladniki, "Wlej do garnka wodę, daj coś tłustego i odstaw aż się ugutoje",2));
         skladniki.clear();
 
         skladniki.add("Rosół"); skladniki.add("Pomidory");
-        przepisy.add(new Przepis("Pomidorowa", "Zupy", R.drawable.pomidorowa, skladniki, "Dodaj pomidory do rosołu"));
+        przepisy.add(new Przepis("Pomidorowa", "Zupy", R.drawable.pomidorowa, skladniki, "Dodaj pomidory do rosołu",3));
         skladniki.clear();
 
         skladniki.add("Czekolada gorzka 100g"); skladniki.add("Czekolada biała 50g"); skladniki.add("Mąka 100g"); skladniki.add("Jajko M");
-        przepisy.add(new Przepis("Brownie", "Ciastka", R.drawable.brownie, skladniki, "Dasz radę <3"));
+        przepisy.add(new Przepis("Brownie", "Ciastka", R.drawable.brownie, skladniki, "Dasz radę <3",4));
         skladniki.clear();
 
 
@@ -41,5 +41,15 @@ public class RepozytoriumPrzepisow {
             }
         }
         return przepisyKategoria;
+    }
+
+    public static Przepis zwrocPrzepisId(int id){
+        generujPrzepisy();
+        for (Przepis przepis:przepisy){
+            if (przepis.getIdPrzepisu() == id){
+                return przepis;
+            }
+        }
+        return przepisy.get(0);
     }
 }

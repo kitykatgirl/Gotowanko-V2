@@ -1,6 +1,9 @@
 package com.example.skprzepisy;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,7 +31,6 @@ public class ListaPrzepisowActivity extends AppCompatActivity {
         String kategoriaPrzepisu = getIntent().getStringExtra("KATEGORIA");
 
         ArrayList<Przepis> przepisy = RepozytoriumPrzepisow.zwrocPrzepisyKategoria(kategoriaPrzepisu);
-        Toast.makeText(ListaPrzepisowActivity.this, kategoriaPrzepisu, Toast.LENGTH_SHORT).show();
         ListView listView = findViewById(R.id.przedmiotyLV);
 
         ArrayList<String> nazwy = new ArrayList<>();
@@ -43,5 +45,16 @@ public class ListaPrzepisowActivity extends AppCompatActivity {
                 nazwy
         );
         listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Przepis przepis = przepisy.get(i);
+                int idTegoPrzepisu = przepis.getIdPrzepisu();
+                Intent intent = new Intent(ListaPrzepisowActivity.this, PrzepisActivity.class);
+                intent.putExtra("ID", idTegoPrzepisu);
+                startActivity(intent);
+            }
+        });
     }
 }
